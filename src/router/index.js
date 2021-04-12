@@ -22,17 +22,25 @@ const routes = [
     name: 'Registered',
     component: () => import('@/components/registered/Registered.vue')
   },
-  ,
   {
     path: '/admin-index/',
     name: 'adminIndex',
     component: AdminIndex,
     children: [
       {
+        path: '/',
+        redirect: 'Main'
+      },
+      {
         // AddMusicLists 会被渲染在 AdminIndex 的 <router-view> 中
         path: 'AddMusicLists',
         name: 'AddMusicLists',
-        component: AddMusicLists,
+        component:() => import('@/views/add-musiclists/AddMusicLists.vue'),
+      },
+      {
+        path: 'Main',
+        name: 'Main',
+        component:() => import('@/views/admin-index/main/Main.vue'),
       },
     ]
   }

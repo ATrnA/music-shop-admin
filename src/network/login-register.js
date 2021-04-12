@@ -1,19 +1,20 @@
 import request from './request.js'
-import qs from "qs";
 
 
-export function postLogin(reqBody) {
-  const query = qs.stringify(reqBody);
+export function postLogin(data) {
+  // const query = qs.stringify(reqBody);
   return request({
-    method:"post",
-    url: `/adminLogin?${query}`
+    method: "post",
+    url: '/adminLogin',
+    data
+    // url: `/adminLogin?${query}`
   })
 }
 
-export function postRegister(reqBody) {
-  const query = qs.stringify(reqBody);
+export function postRegister(data) {
   return request({
     method:"post",
-    url: `/adminRegistered?${query}`
+    url: `/adminRegistered`,
+    data
   })
 }

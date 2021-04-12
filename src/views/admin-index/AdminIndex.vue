@@ -2,7 +2,7 @@
  * @Author: xujintai
  * @Date: 2021-04-12 10:27:35
  * @LastEditors: xujintai
- * @LastEditTime: 2021-04-12 11:10:55
+ * @LastEditTime: 2021-04-12 13:21:29
  * @Description: file content
  * @FilePath: \music-shop-admin\src\views\admin-index\AdminIndex.vue
 -->
@@ -22,26 +22,48 @@
                 background-color="#545c64"
                 text-color="#fff"
                 active-text-color="#ffd04b"
+                router
               >
                 <el-submenu index="1">
                   <template slot="title">
                     <i class="el-icon-location"></i>
-                    <span>导航一</span>
+                    <span>管理员管理</span>
                   </template>
                   <el-menu-item-group>
-                    <template slot="title">分组一</template>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
+                    <el-menu-item index="1-1">增加管理员</el-menu-item>
+                    <el-menu-item index="1-2">管理员维护</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="2">
-                  <i class="el-icon-menu"></i>
-                  <span slot="title">导航二</span>
-                </el-menu-item>
-                <el-menu-item index="3">
-                  <i class="el-icon-setting"></i>
-                  <span slot="title">导航三</span>
-                </el-menu-item>
+                <el-submenu index="2">
+                  <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>用户管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="2-1">增加用户</el-menu-item>
+                    <el-menu-item index="2-2">用户维护</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="3">
+                  <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>音乐管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="/admin-index/AddMusicLists">音乐上架</el-menu-item>
+                    <el-menu-item index="3-2">音乐维护</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="4">
+                  <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>订单管理</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="4-1">选项1</el-menu-item>
+                    <el-menu-item index="4-2">选项2</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
               </el-menu>
             </el-col>
           </el-row>

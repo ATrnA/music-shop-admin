@@ -7,7 +7,7 @@ export default function request(config) {
   });
 
   //设置数据传输格式为FormData
-  // instance.defaults.headers["Content-Type"]="application/x-www-form-urlencoded"
+  instance.defaults.headers.post["Content-Type"]="application/x-www-form-urlencoded"
 
   // 添加请求拦截器
   instance.interceptors.request.use(
