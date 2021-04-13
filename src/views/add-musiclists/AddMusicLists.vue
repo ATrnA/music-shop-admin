@@ -2,7 +2,7 @@
  * @Author: xujintai
  * @Date: 2021-04-12 10:35:40
  * @LastEditors: xujintai
- * @LastEditTime: 2021-04-13 15:06:25
+ * @LastEditTime: 2021-04-13 17:30:38
  * @Description: file content
  * @FilePath: \music-shop-admin\src\views\add-musiclists\AddMusicLists.vue
 -->
@@ -66,14 +66,7 @@
       preload="auto"
       src="@/assets/music/黄种人.mp3"
     ></audio>-->
-    <audio
-      autoplay="autoplay"
-      id="audio"
-      controls="controls"
-      loop="loop"
-      preload="auto"
-      src="http://127.0.0.1:8000/music/%E9%BB%84%E7%A7%8D%E4%BA%BA.mp3"
-    ></audio>
+    <audio autoplay="autoplay" id="audio" controls="controls" loop="loop" preload="auto" src></audio>
   </div>
 </template>
 
@@ -140,7 +133,6 @@ export default {
       this.$refs[formName].resetFields();
     },
     fileChange(e) {
-      // const file = this.$refs.musicFileInput.files[0];
       // 读取上传的file
       //FileReader 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据。
       // const reader = new FileReader();
@@ -156,11 +148,16 @@ export default {
       const file = document.getElementById("musicFileInput").files[0];
       const xhr = new XMLHttpRequest();
       const fd = new FormData();
+      //"file"字段必须和后端保持统一，将文件变为FormData的对象
       fd.append("file", file);
       xhr.open("POST", "http://127.0.0.1:8000/music", true);
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          alert(xhr.responseText);
+          let { path } = JSON.parse(xhr.responseText);
+          path = path.split("public\\music\\")[1];
+          document.getElementById(
+            "audio"
+          ).src = `http://127.0.0.1:8000/music/${path}`;
         }
       };
       xhr.send(fd);
